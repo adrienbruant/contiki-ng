@@ -28,3 +28,9 @@
 [submodule "arch/cpu/cc26xx-cc13xx/lib/cc2640r2-sdk"]
 	path = arch/cpu/cc26x0-cc13x0/lib/cc2640r2-sdk
 	url = https://github.com/contiki-ng/cc2640r2-sdk.git
+[submodule "arch/cpu/stm32l4/cmsis_device_l4"]
+	path = arch/cpu/stm32l4/cmsis_device_l4
+	url = https://github.com/STMicroelectronics/cmsis_device_l4.git
+[submodule "arch/cpu/stm32l4/stm32l4xx_hal_driver"]
+	path = arch/cpu/stm32l4/stm32l4xx_hal_driver
+	url = https://github.com/STMicroelectronics/stm32l4xx_hal_driver.git
