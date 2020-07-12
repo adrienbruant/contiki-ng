@@ -30,6 +30,9 @@ ENTRY(Reset_Handler)
 /* Highest address of the user mode stack */
 _estack = ORIGIN(RAM) + LENGTH(RAM);	/* end of "RAM" Ram type memory */
 
+/* This symbol is used by the stack check library. */
+_stack_origin = _estack ;
+
 _Min_Heap_Size = 0x200;	/* required amount of heap  */
 _Min_Stack_Size = 0x400;	/* required amount of stack */
 
@@ -158,13 +161,13 @@ SECTIONS
     . = ALIGN(8);
     PROVIDE ( end = . );
     PROVIDE ( _end = . );
+    /* This symbol is used by the stack check library. */
     PROVIDE ( _stack = . );
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-    PROVIDE ( _stack_origin = . );
   } >RAM
-
+  
   /* Remove information from the compiler libraries */
   /DISCARD/ :
   {
