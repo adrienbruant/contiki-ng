@@ -1,0 +1,10 @@
+CLEAN += *.nucleo-l432kc
+
+CFLAGS += -DSTM32L432xx
+
+CONTIKI_TARGET_DIRS = .
+
+CONTIKI_SOURCEFILES += platform.c
+
+CONTIKI_CPU=$(CONTIKI)/arch/cpu/stm32l4
+include $(CONTIKI_CPU)/Makefile.stm32l4
