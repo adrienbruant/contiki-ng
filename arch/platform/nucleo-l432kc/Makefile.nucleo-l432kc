@@ -3,6 +3,7 @@ CLEAN += *.nucleo-l432kc
 CFLAGS += -DSTM32L432xx
 
 ifeq ($(DEBUG), 1)
+  OPTIMIZATIONS = -Og -ggdb3
   CFLAGS += -DFREEZE_TIMER_WHEN_DEBUGGING
   BUILD_DIR_CONFIG = debug
 else
