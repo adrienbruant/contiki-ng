@@ -23,6 +23,8 @@
 #include "stm32l4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "clock-arch.h"
+#include "rtimer-arch.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -186,7 +188,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+  clock_inc_tick();
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -198,6 +200,12 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
+
+void LPTIM2_IRQHandler(void)
+{
+  HAL_NVIC_ClearPendingIRQ(LPTIM2_IRQn);
+  rtimer_interrupt_handler();
+}
 
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

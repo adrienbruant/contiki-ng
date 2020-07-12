@@ -87,7 +87,7 @@ void platform_idle(void)
 
 int __io_flush(char *buffer, uint16_t len)
 {
-  return ( HAL_UART_Transmit(&huart2, (uint8_t*)buffer, len, 10) != HAL_OK );
+  return ( HAL_UART_Transmit(&huart2, (uint8_t*)buffer, len, 100) != HAL_OK );
 }
 
 int __io_putchar(int ch)
