@@ -112,12 +112,15 @@ stm32l4xx_ll_utils.c \
 
 CPU_START_SOURCEFILES = startup_stm32l432xx.s
 
-CONTIKI_CPU_DIRS = . $(ST_HAL_DIR)/Src $(ST_HAL_DIR)/Inc $(ST_CMSIS_DIR)/Include $(ST_CMSIS_DIR)/Source/Templates/gcc
+CONTIKI_CPU_DIRS = . dev $(ST_HAL_DIR)/Src $(ST_HAL_DIR)/Inc $(ST_CMSIS_DIR)/Include $(ST_CMSIS_DIR)/Source/Templates/gcc
 CONTIKI_CPU_SOURCEFILES += $(ST_HAL_SOURCES) $(ST_HAL_LL_SOURCES)
 CONTIKI_CPU_SOURCEFILES += $(CPU_START_SOURCEFILES)
 CONTIKI_CPU_SOURCEFILES += stm32l4xx_hal_msp.c stm32l4xx_it.c syscalls.c sysmem.c system_stm32l4xx.c dbg-handlers.c
-CONTIKI_CPU_SOURCEFILES += clock.c rtimer-arch.c watchdog.c dbg.c
+CONTIKI_CPU_SOURCEFILES += clock.c rtimer-arch.c watchdog.c dbg.c uart.c
 
 CONTIKI_SOURCEFILES += $(CONTIKI_CPU_SOURCEFILES)
+
+#Use LL Drivers
+CFLAGS += -DUSE_FULL_LL_DRIVER
 
 include $(CONTIKI)/arch/cpu/arm/cortex-m/cm4/Makefile.cm4
